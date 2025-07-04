@@ -1,0 +1,60 @@
+# API Keys Configuration
+# DO NOT COMMIT THIS FILE TO VERSION CONTROL
+# Add to .gitignore for security
+
+# Bloomberg Terminal Configuration
+bloomberg:
+  host: "localhost"
+  port: 8194
+  timeout: 30000
+  max_retries: 3
+  session_options:
+    autoStartSession: true
+    allowMultipleCorrelatorsPerMsg: false
+
+# Data Sources
+data_sources:
+  bloomberg:
+    enabled: true
+    subscription_limit: 1000
+    
+  # Alternative data sources (if needed)
+  refinitiv:
+    enabled: false
+    api_key: ""
+    
+  alpha_vantage:
+    enabled: false
+    api_key: ""
+
+# Database Configuration (if used)
+database:
+  type: "postgresql"  # or "sqlite", "mysql"
+  host: "localhost"
+  port: 5432
+  database: "ccteu_pricing"
+  username: ""
+  password: ""
+  
+# Model Configuration
+model_config:
+  default_lookback_days: 252
+  rolling_window_days: 20
+  pca_components: 2
+  rebalance_frequency: "daily"
+  
+# Risk Management
+risk_limits:
+  max_position_size: 100000000  # 100M EUR
+  max_portfolio_exposure: 500000000  # 500M EUR
+  stop_loss_threshold: 0.02  # 2%
+  
+# Logging
+logging:
+  level: "INFO"
+  file_path: "logs/ccteu_pricing.log"
+  max_file_size: "10MB"
+  backup_count: 5
+
+# Environment
+environment: "development"  # development, staging, production
